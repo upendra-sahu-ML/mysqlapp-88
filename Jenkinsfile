@@ -25,7 +25,7 @@ pipeline {
           }
           dir ('./charts/mysqlapp-88') {
             container('jx-base') {
-              sh "make tag"
+              sh "sed -i -e \"s/version:.*/version: 1.\$(env.BUILD_NUMBER)/\" Chart.yaml"
             }
           }
         }
